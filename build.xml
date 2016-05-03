@@ -1,1 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<project name="log4J practica eclipse" basedir="." default="todo">
+    <property name="src" value="src"/>
+    <property name="bin" value="bin"/>
+    <property name="conf" value="etc"/>
+
+    <property name="paquetes" value="com.foo"/>
+
+    <target name="clean">
+      <delete dir="${bin}"/>
+    </target>
+
+    <target name="compile" depends="clean">
+      <mkdir dir="${bin}"/>
+      <javac includeantruntime="false" srcdir="${src}" destdir="${bin}"/>
+      <echo message="Compiling...done"/>
+    </target>
+
+    <target name="run" depends="compile">
+      <java classname="com.foo">
+         <classpath>
+              <pathelement path="${bin}"/>
+         </classpath>
+      </java>
+    </target>
+
+    <target name="todo" depends="run"/>
+
+</project>
